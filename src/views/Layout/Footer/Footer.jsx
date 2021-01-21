@@ -2,22 +2,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Container } from 'reactstrap';
+import FeatherIcon from "feather-icons-react";
 function Footer() {
   const pageLinks = {
     grid1: [
-      { title: 'About us', link: '/aboutus' },
-      { title: 'Gurus', link: '/gurus' },
-      { title: 'Online Sessions', link: '/online-sessions' },
-      { title: 'Beta App', link: '/the-app' },
-      { title: 'Blog', link: '/blog' },
-      { title: 'Concierge', link: '/concierge' },
-      { title: 'Login', link: '/login' }
-    ],
-    grid2: [
-      { title: 'Contact', link: '/contact' },
-      { title: 'Support', link: '/support' },
-      { title: 'Terms & Conditions', link: '/terms-condition' },
-      { title: 'Privacy Policy', link: '/privacy-policy' }
+      { title: 'View Profile', link: '/profile' },
+      { title: 'Select Availability', link: '/add-availability' },
     ],
     instagram: 'www.instagram.com',
     facebook: 'www.facebook.com',
@@ -31,8 +21,8 @@ function Footer() {
         <Container>
           <Row>
             <Col
-              lg="3"
-              md="4"
+              lg="6"
+              md="8"
               xs="12"
               className="mt-4 mt-sm-0 pt-2 pt-sm-0"
               name="footercolumn"
@@ -48,25 +38,6 @@ function Footer() {
                 ))}
               </ul>
             </Col>
-
-            <Col
-              lg="3"
-              md="4"
-              xs="12"
-              className="mt-4 mt-sm-0 pt-2 pt-sm-0"
-              name="footercolumn"
-            >
-              <ul className="list-unstyled footer-list mt-4">
-                {pageLinks.grid2.map((grid, key) => (
-                  <li key={key}>
-                    <Link to={grid.link} className="text-foot">
-                      {grid.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Col>
-
             <Col
               lg={{ size: 3, offset: 3 }}
               md="4"
@@ -82,10 +53,10 @@ function Footer() {
                         icon={['fab', 'facebook-square']}
                         size="2x"
                       /> */}
-                      {/* <FeatherIcon
+                      <FeatherIcon
                         icon="facebook"
                         className="fea icon-m-md fea-social"
-                      /> */}
+                      />
                     </i>
                   </Link>
                 </li>
@@ -93,10 +64,10 @@ function Footer() {
                   <Link to={pageLinks.instagram}>
                     <i>
                       {/* <FontAwesomeIcon icon={['fab', 'instagram']} size="2x" /> */}
-                      {/* <FeatherIcon
+                      <FeatherIcon
                         icon="instagram"
                         className="fea icon-m-md fea-social"
-                      /> */}
+                      />
                     </i>
                   </Link>
                 </li>
@@ -107,10 +78,10 @@ function Footer() {
                         icon={['fab', 'twitter-square']}
                         size="2x"
                       /> */}
-                      {/* <FeatherIcon
+                      <FeatherIcon
                         icon="twitter"
                         className="fea icon-m-md fea-social"
-                      /> */}
+                      />
                     </i>
                   </Link>
                 </li>
@@ -118,10 +89,10 @@ function Footer() {
                   <Link to={pageLinks.linkedin} className="rounded">
                     <i>
                       {/* <FontAwesomeIcon icon={['fab', 'linkedin']} size="2x" /> */}
-                      {/* <FeatherIcon
+                      <FeatherIcon
                         icon="linkedin"
                         className="fea icon-m-md fea-social"
-                      /> */}
+                      />
                     </i>
                   </Link>
                 </li>
@@ -143,7 +114,7 @@ function Footer() {
 
             <Col sm="6" className="mt-4 mt-sm-0 pt-2 pt-sm-0">
               <div className="text-sm-right">
-                <p className="mb-0">Website by Full Frontal Design</p>
+                <p className="mb-0">Website by Saatvik Bhatnagar</p>
               </div>
             </Col>
           </Row>
