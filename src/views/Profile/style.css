@@ -1,0 +1,28 @@
+.item-container {
+	display: inline-flex;
+	margin: 5px;
+	border-radius: 200px;
+	padding: 5px 10px;
+	border: 1px solid #ff5001;
+}
+.watchMore-container {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+.work-container {
+	padding: 20px;
+}
+.watchMore-container > a:hover {
+	color: #ff5001 !important;
+}
+.job-profile {
+	width: 80%;
+	margin: 0 auto;
+	box-shadow: 5px black;
+}
+.p-accordion-header-text,
+.p-accordion-toggle-icon {
+	color: #ff5001 !important;
+}
