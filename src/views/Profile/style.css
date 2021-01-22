@@ -18,11 +18,24 @@
 	color: #ff5001 !important;
 }
 .job-profile {
-	width: 80%;
+	width: 100%;
 	margin: 0 auto;
 	box-shadow: 5px black;
 }
 .p-accordion-header-text,
 .p-accordion-toggle-icon {
 	color: #ff5001 !important;
+}
+.empty-techVideos-container {
+	height: 475px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: lightgray;
+	opacity: 0.6;
+	width: 100%;
+}
+.empty-techVideos-container > h3 {
+	color: black;
+	font-weight: bold;
 }

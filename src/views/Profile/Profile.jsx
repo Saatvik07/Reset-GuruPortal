@@ -7,80 +7,8 @@ import FeatherIcon from "feather-icons-react";
 import "./style.css";
 function Profile() {
     const auth = useSelector(state => state.auth);
-    const [guruObj,setGuruObj] = useState({
-        "guruID": "2bf818e6-d0ff-4cb9-896d-0cd6e26d899b",
-        "email": "saatvik19097@iiitd.ac.in",
-        "firstName": "Satvik",
-        "lastName": "Bhatt",
-        "profilePhoto": "https://guru-videos-1.s3.us-east-2.amazonaws.com/profile/Satvik%20Bhatt_1610739118",
-        "bio": "This is a simulation",
-        "categories": [
-            {
-                "name": "Nutritionist",
-                "ID": "cb5cb752-2cd1-4804-b1e4-07b82a83102a"
-            },
-            {
-                "name": "Motivational Coach",
-                "ID": "71af557e-716f-47e6-9959-fd92e301a44b"
-            },
-            {
-                "name": "Holistic Therapy",
-                "ID": "ce7a277d-894b-48a8-836e-cf5085ee46fd"
-            }
-        ],
-        "keywords": [
-            {
-                "name": "Motivation",
-                "ID": "cdbc1eae-b768-4131-89c2-0cef6b3446d9"
-            },
-            {
-                "name": "Fitness",
-                "ID": "c43aa6d3-fc01-4f20-afbd-7210f573f3a4"
-            }
-        ],
-        "techniqueVideos": {
-            "videoID": 2,
-            "videoList": [
-                {
-                    "duration": 2,
-                    "thumbnail": "https://guru-videos-1.s3.us-east-2.amazonaws.com/thumbnails/Satvik%20Bhatt/1_1610739250",
-                    "video": "https://guru-videos-1.s3.us-east-2.amazonaws.com/video/Satvik%20Bhatt_2bf818e6-d0ff-4cb9-896d-0cd6e26d899b/videos/1_1610739291",
-                    "title": "Video 1"
-                },
-                {
-                    "duration": 2,
-                    "thumbnail": "https://guru-videos-1.s3.us-east-2.amazonaws.com/thumbnails/Satvik%20Bhatt/1_1610739250",
-                    "video": "https://guru-videos-1.s3.us-east-2.amazonaws.com/video/Satvik%20Bhatt_2bf818e6-d0ff-4cb9-896d-0cd6e26d899b/videos/1_1610739291",
-                    "title": "Video 1"
-                },
-                {
-                    "duration": 2,
-                    "thumbnail": "https://guru-videos-1.s3.us-east-2.amazonaws.com/thumbnails/Satvik%20Bhatt/1_1610739250",
-                    "video": "https://guru-videos-1.s3.us-east-2.amazonaws.com/video/Satvik%20Bhatt_2bf818e6-d0ff-4cb9-896d-0cd6e26d899b/videos/1_1610739291",
-                    "title": "Video 1"
-                },
-            ]
-        },
-        "introVideo": {
-            "photo": "https://guru-videos-1.s3.us-east-2.amazonaws.com/thumbnails/Saatvik%20Bhatnagar_1610738070",
-            "video": "https://guru-videos-1.s3.us-east-2.amazonaws.com/video/Saatvik%20Bhatnagar/intro_1610738085"
-        },
-        "filters": [
-            {
-                "name": "Happiness",
-                "ID": "7f275dee-fb4e-4d59-ba87-51f2a4327740"
-            },
-            {
-                "name": "Neutral",
-                "ID": "818e9f95-0d54-4712-9e2d-2142e50d3dd3"
-            },
-            {
-                "name": "Warmth",
-                "ID": "6b71fa6f-dc02-418e-ae14-29985e5f9b71"
-            }
-        ]
-    });
-    const [loading,setLoading] = useState(false);
+    const [guruObj,setGuruObj] = useState(null);
+    const [loading,setLoading] = useState(true);
     const fetchGuruData = async ()=>{
         setLoading(true)
         const guruId = auth.user.attributes.sub;
@@ -92,12 +20,16 @@ function Profile() {
                 return jsonResponse;
             })
             .then(result=>{
+                console.log(result);
                 setGuruObj(result.body);
                 setLoading(false);
             })
     }
     useEffect(()=>{
-        //fetchGuruData();
+        if(auth.idToken){
+            fetchGuruData();
+        }
+        
     },[])
     return (
         <div>
@@ -127,7 +59,7 @@ function Profile() {
                 <section className="section">
                     <Container style={{ maxWidth: '80vw', margin: '0 auto' }}>
                     <Row>
-                        <Col lg="5" md="6" xs="12">
+                        <Col lg="4" md="5" xs="12">
                             <Card className="job-profile shadow">
                             <div className="text-center py-5 border-bottom rounded-top">
                                 <img
@@ -183,7 +115,7 @@ function Profile() {
                             </Card>
                         </Col>
 
-                        <Col lg="7" md="6" xs="12" className="mt-4 mt-sm-0 pt-2 pt-sm-0">
+                        <Col lg={{ size: 7, offset: 1 }} md="6" xs="12" className="mt-4 mt-sm-0 pt-2 pt-sm-0">
                             <div className="ml-lg-4">
                             <h4>Bio :</h4>
                             <p className="text-muted">
@@ -191,7 +123,8 @@ function Profile() {
                             </p>
                             <h4 className="mt-lg-5 mt-4">Technique Videos :</h4>
                             <Row>
-                                {guruObj.techniqueVideos.videoList.map((techVideo, key) => (
+                                {guruObj.techniqueVideos.videoList.length>0?
+                                guruObj.techniqueVideos.videoList.map((techVideo, key) => (
                                 <Col key={key} md={4} xs={12} className="mt-4 pt-2">
                                     <Card className="work-container work-classic">
                                     <CardBody className="p-0">
@@ -228,7 +161,12 @@ function Profile() {
                                     </CardBody>
                                     </Card>
                                 </Col>
-                                ))}
+                                ))
+                                :
+                                <div className="empty-techVideos-container">
+                                    <h3>No technique videos</h3>
+                                </div>
+                                }
                             </Row>
                             </div>
                         </Col>

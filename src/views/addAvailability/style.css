@@ -176,10 +176,10 @@
 	transition: all 0.3s;
 	margin: 20px auto;
 }
-.form-control {
+/* .form-control {
 	width: 75%;
 	height: 75px !important;
-}
+} */
 .book-btn:hover {
 	background-color: #fff;
 	color: #191b1e !important;

@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Container } from 'reactstrap';
-import FeatherIcon from "feather-icons-react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 function Footer() {
   const pageLinks = {
     grid1: [
@@ -49,50 +49,50 @@ function Footer() {
                 <li className="list-inline-item ml-4">
                   <Link to={pageLinks.instagram} className="rounded">
                     <i>
-                      {/* <FontAwesomeIcon
+                      <FontAwesomeIcon
                         icon={['fab', 'facebook-square']}
                         size="2x"
-                      /> */}
-                      <FeatherIcon
+                      />
+                      {/* <FeatherIcon
                         icon="facebook"
                         className="fea icon-m-md fea-social"
-                      />
+                      /> */}
                     </i>
                   </Link>
                 </li>
                 <li className="list-inline-item ml-4">
                   <Link to={pageLinks.instagram}>
                     <i>
-                      {/* <FontAwesomeIcon icon={['fab', 'instagram']} size="2x" /> */}
-                      <FeatherIcon
+                      <FontAwesomeIcon icon={['fab', 'instagram']} size="2x" />
+                      {/* <FeatherIcon
                         icon="instagram"
                         className="fea icon-m-md fea-social"
-                      />
+                      /> */}
                     </i>
                   </Link>
                 </li>
                 <li className="list-inline-item ml-4">
                   <Link to={pageLinks.twitter} className="rounded">
                     <i>
-                      {/* <FontAwesomeIcon
+                      <FontAwesomeIcon
                         icon={['fab', 'twitter-square']}
                         size="2x"
-                      /> */}
-                      <FeatherIcon
+                      />
+                      {/* <FeatherIcon
                         icon="twitter"
                         className="fea icon-m-md fea-social"
-                      />
+                      /> */}
                     </i>
                   </Link>
                 </li>
                 <li className="list-inline-item ml-4">
                   <Link to={pageLinks.linkedin} className="rounded">
                     <i>
-                      {/* <FontAwesomeIcon icon={['fab', 'linkedin']} size="2x" /> */}
-                      <FeatherIcon
+                      <FontAwesomeIcon icon={['fab', 'linkedin']} size="2x" />
+                      {/* <FeatherIcon
                         icon="linkedin"
                         className="fea icon-m-md fea-social"
-                      />
+                      /> */}
                     </i>
                   </Link>
                 </li>
