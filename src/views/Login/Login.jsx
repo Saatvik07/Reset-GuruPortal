@@ -52,7 +52,7 @@ export default function Login() {
             return <Redirect to="/new-guru-login"/>
         }
         else{
-            return <Redirect to="/view-all-guru"/>;
+            return <Redirect to="/profile"/>;
         }
     }
     return (
